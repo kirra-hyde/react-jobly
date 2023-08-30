@@ -1,6 +1,6 @@
 import React from "react";
 
-/** Renders homepage
+/** Renders homepage.
  *
  * RoutesList -> Homepage
  */

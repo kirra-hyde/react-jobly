@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import JoblyApi from "./api";
 
 
-/** Houses logic to retrieve list of jobs associated with one company
+/** Houses logic to retrieve list of jobs associated with one company.
  *
  * State: list of jobs
  *
  * RoutesList -> CompanyDetail -> JobCardList
  */
+
 function CompanyDetail() {
   const { handle } = useParams();
 

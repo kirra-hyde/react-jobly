@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-/** Renders navigation bar
+/** Renders navigation bar.
  *
  * App -> Navigation
 */
+
 function Navigation() {
   return (
     <nav className="Navigation">

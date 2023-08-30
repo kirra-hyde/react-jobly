@@ -1,19 +1,24 @@
 import React from "react";
 import JoblyApi from "./api";
-//import CompanyCard from "./CompanyCard";
-//import SearchForm from "./SearchForm";
+import CompanyCard from "./CompanyCard";
+import SearchForm from "./SearchForm";
 
-/** Renders page displaying list of companies
+/** Renders page displaying list of companies and houses logic
+ * to retrieve list of companies.
  *
  * State: list of companies [{name, description, logoUrl}, ...]
  *
  * RoutesList -> CompanyList -> CompanyCard
- *
  */
+
 function CompanyList() {
 
   return (
-    <h1>CompanyList: Something should be here!</h1>
+    <div>
+      <h1>CompanyList: Something should be here!</h1>
+      <SearchForm />
+      <CompanyCard />
+    </div>
   )
 }
 
