@@ -59,9 +59,16 @@ class JoblyApi {
     return res.jobs;
   }
 
+  /** Get list of all companies that match keyword. */
   static async getCompaniesByTerm(keyword) {
-    let res = await this.request(`jobs?nameLike=${keyword}`);
+    let res = await this.request(`companies?nameLike=${keyword}`);
     return res.companies;
+  }
+
+  /** Get list of all jobs that match keyword. */
+  static async getJobsByTerm(keyword) {
+    let res = await this.request(`jobs?title=${keyword}`);
+    return res.jobs;
   }
 
 }

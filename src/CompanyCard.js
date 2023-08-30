@@ -13,15 +13,19 @@ function CompanyCard({ company }) {
 
   return(
     <div className="Company">
-      <div className="Company-logo">
-        <img src={`${company.logoUrl}`}/>
-      </div>
-      <div className="Company-name">
-        <h3>{company.name}</h3>
-      </div>
-      <div className="Company-description">
-        <p>{company.description}</p>
-      </div>
+        <div className="Company-logo">
+          <img alt={company.handle} src={`${company.logoUrl}`}/>
+        </div>
+        <div className="Company-name">
+          <a href={`/companies/${company.handle}`}>
+            <h3>{company.name}</h3>
+          </a>
+        </div>
+        <div className="Company-description">
+          <p>{company.description}</p>
+        </div>
+        <br />
+        <br />
     </div>
   );
 }

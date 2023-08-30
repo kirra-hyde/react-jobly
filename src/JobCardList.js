@@ -15,17 +15,9 @@ import { v4 as uuid } from "uuid";
 
 function JobsCardList({ jobs }) {
 
-    // return (
-    //   <div>
-    //     <h1>JobsList: Something should be here!</h1>
-    //     <SearchForm />
-    //     <JobCard />
-    //   </div>
-    // );
-
     return jobs.map(job => (
       <div key={uuid()}>
-      <JobCard job={job} />
+        <JobCard job={job} />
       </div>
     ));
   };

@@ -13,10 +13,12 @@ function SearchForm({ searchFor }) {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  /** update search term. */
   function handleChange(evt) {
     setSearchTerm(evt.target.value);
   }
 
+  /** On form submission, send searchTerm to parent. */
   function handleSubmit(evt) {
     evt.preventDefault();
     searchFor(searchTerm);

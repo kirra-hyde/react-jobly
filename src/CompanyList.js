@@ -18,10 +18,12 @@ function CompanyList() {
 
   const [companies, setCompanies] = useState({
     data: null,
-    isLoading: true
+    isLoading: true,
   });
 
-
+  /** Makes an API call to fetch list of jobs that contain
+   * passed in keyword and updates state for companies.
+   */
   async function searchFor(keyword) {
     const companiesRes = await JoblyApi.getCompaniesByTerm(keyword);
     setCompanies({
@@ -49,10 +51,13 @@ function CompanyList() {
     return (<h1>Loading...</h1>);
   }
 
+  if (companies.data.length === 0){
+    return (<h3>Sorry, no results found!</h3>)
+  }
+
   console.log("companies looks like:", companies.data);
   return (
     <div className="CompanyList">
-      <h1>CompanyList: Something should be here!</h1>
       <SearchForm searchFor={searchFor}/>
       {companies.data.map(c => (
         <div key={uuid()}>
