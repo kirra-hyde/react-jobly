@@ -1,7 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
 
 /** Renders navigation bar.
+ *
+ * Props: none
+ *
+ * State: none
  *
  * App -> Navigation
 */
@@ -9,7 +14,7 @@ import { NavLink } from "react-router-dom";
 function Navigation() {
   return (
     <nav className="Navigation">
-      <NavLink to="/" end> Jobly </NavLink>
+      <Link to="/"> Jobly </Link>
       <NavLink to="/companies" end> Companies </NavLink>
       <NavLink to="/jobs" end> Jobs </NavLink>
     </nav>

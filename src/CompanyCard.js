@@ -1,8 +1,10 @@
 import React from "react";
 
-/** Renders individual company in list.
+/** Renders individual company card.
  *
  * Props: company, ex. {name, description, logoUrl}
+ *
+ * State: none
  *
  * CompanyList -> CompanyCard
  */

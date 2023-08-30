@@ -6,7 +6,9 @@ import SearchForm from "./SearchForm";
 /** Renders page displaying list of companies and houses logic
  * to retrieve list of companies.
  *
- * State: list of companies [{name, description, logoUrl}, ...]
+ * Props: none
+ * 
+ * State: companies, ex. [{name, description, logoUrl}, ...]
  *
  * RoutesList -> CompanyList -> CompanyCard
  */

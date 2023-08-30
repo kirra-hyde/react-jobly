@@ -2,24 +2,33 @@ import React from "react";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 import SearchForm from "./SearchForm";
+import { v4 as uuid } from "uuid";
 
 /** Renders page displaying list of jobs.
  *
- * State: list of jobs [{name, description, logoUrl}, ...]
+ * Props: jobs, ex. [{companyName, title, equity, salary}, ...]
+ *
+ * State: none
  *
  * RoutesList -> JobsList -> JobCard
  */
 
-function JobsList() {
+function JobsCardList({ jobs }) {
 
-  return (
-    <div>
-      <h1>JobsList: Something should be here!</h1>
-      <SearchForm />
-      <JobCard />
-    </div>
-  )
-}
+    // return (
+    //   <div>
+    //     <h1>JobsList: Something should be here!</h1>
+    //     <SearchForm />
+    //     <JobCard />
+    //   </div>
+    // );
+
+    return jobs.map(job => (
+      <div key={uuid()}>
+      <JobCard job={job} />
+      </div>
+    ));
+  };
 
 
-export default JobsList;
+export default JobsCardList;
