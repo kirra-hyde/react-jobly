@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 /** Renders SearchForm component.
  *
@@ -9,12 +9,27 @@ import React from "react";
  * { JobsList, CompanyList } -> SearchForm
  */
 
-function SearchForm() {
+function SearchForm({ searchFor }) {
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function handleChange(evt) {
+    setSearchTerm(evt.target.value);
+  }
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    searchFor(searchTerm);
+  }
 
   return (
-    <form>
-      <input type="text" placeholder="something..."/>
-      <button>Do something!</button>
+    <form className="SearchForm" onSubmit={handleSubmit}>
+      <input
+          type="text"
+          placeholder="Enter a search term..."
+          onChange={handleChange}
+      />
+      <button>Submit</button>
     </form>
   )
 }

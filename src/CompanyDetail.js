@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import JoblyApi from "./api";
-import JobCardList from "./JobCardList"
+import JobCardList from "./JobCardList";
 
 
 /** Houses logic to retrieve list of jobs associated with one company.
@@ -18,9 +18,9 @@ function CompanyDetail() {
   console.log("our handle:", handle);
 
   const [company, setCompany] = useState({
-    date: null,
+    data: null,
     isLoading: true
-  })
+  });
 
   useEffect(function fetchCompanyWhenMounted() {
     async function fetchCompany() {
@@ -30,22 +30,22 @@ function CompanyDetail() {
           data: companyRes,
           isLoading: false
         });
-      } catch (err){
+      } catch (err) {
         console.warn(err);
       }
     }
     fetchCompany();
   }, []);
 
-  if (company.isLoading === true){
-    return (<h1>Loading...</h1>)
+  if (company.isLoading === true) {
+    return (<h1>Loading...</h1>);
   }
 
   return (
     <div>
-      <JobCardList jobs={company.data.jobs}/>
+      <JobCardList jobs={company.data.jobs} />
     </div>
-  )
+  );
 }
 
 

@@ -11,8 +11,6 @@ import React from "react";
 
 function JobCard({ job }) {
 
-  // return(<p>I'm a job card.</p>);
-
   return (
     <div className="Job">
       <div className="Job-title">

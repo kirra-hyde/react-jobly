@@ -9,9 +9,21 @@ import React from "react";
  * CompanyList -> CompanyCard
  */
 
-function CompanyCard() {
+function CompanyCard({ company }) {
 
-  return(<p>I'm a company card.</p>);
+  return(
+    <div className="Company">
+      <div className="Company-logo">
+        <img src={`${company.logoUrl}`}/>
+      </div>
+      <div className="Company-name">
+        <h3>{company.name}</h3>
+      </div>
+      <div className="Company-description">
+        <p>{company.description}</p>
+      </div>
+    </div>
+  );
 }
 
 export default CompanyCard;
