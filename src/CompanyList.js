@@ -15,7 +15,6 @@ import {v4 as uuid} from "uuid";
  */
 
 function CompanyList() {
-
   const [companies, setCompanies] = useState({
     data: null,
     isLoading: true,
@@ -55,7 +54,6 @@ function CompanyList() {
     return (<h3>Sorry, no results found!</h3>)
   }
 
-  console.log("companies looks like:", companies.data);
   return (
     <div className="CompanyList">
       <SearchForm searchFor={searchFor}/>

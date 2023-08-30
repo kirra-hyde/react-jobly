@@ -15,7 +15,6 @@ import JobCardList from "./JobCardList";
 
 function CompanyDetail() {
   const { handle } = useParams();
-  console.log("our handle:", handle);
 
   const [company, setCompany] = useState({
     data: null,
@@ -43,6 +42,9 @@ function CompanyDetail() {
 
   return (
     <div>
+      <h3>{company.data.name }</h3>
+      <p>{company.data.description }</p>
+      <br />
       <JobCardList jobs={company.data.jobs} />
     </div>
   );

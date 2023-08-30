@@ -15,12 +15,13 @@ import { v4 as uuid } from "uuid";
 
 function JobsCardList({ jobs }) {
 
-    return jobs.map(job => (
-      <div key={uuid()}>
-        <JobCard job={job} />
-      </div>
-    ));
-  };
+  return jobs.map(job => (
+    <div key={uuid()}>
+      <JobCard job={job} />
+    </div>
+  ));
+
+};
 
 
 export default JobsCardList;
