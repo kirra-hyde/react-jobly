@@ -1,7 +1,8 @@
 import React from "react";
 
-/**
+/** Renders homepage
  *
+ * RoutesList -> Homepage
  */
 
 function Homepage() {
