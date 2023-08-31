@@ -24,11 +24,19 @@ function JobsList() {
    * passed in keyword and updates state for jobs.
    */
   async function searchFor(keyword) {
-    const jobsRes = await JoblyApi.getJobsByTerm(keyword);
-    setjobs({
-      data: jobsRes,
-      isLoading: false
-    });
+    if (keyword !== ""){
+      const jobsRes = await JoblyApi.getJobsByTerm(keyword);
+      setjobs({
+        data: jobsRes,
+        isLoading: false
+      });
+    } else {
+      const jobsRes = await JoblyApi.getJobs();
+      setjobs({
+        data: jobsRes,
+        isLoading: false
+      });
+    }
   }
 
   useEffect(function fetchjobsWhenMounted() {

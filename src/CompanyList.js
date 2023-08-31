@@ -27,19 +27,19 @@ function CompanyList() {
    */
   async function searchFor(keyword) {
     if (keyword !== ""){
-    const companiesRes = await JoblyApi.getCompaniesByTerm(keyword);
-    setCompanies({
-      data: companiesRes,
-      isLoading: false
-    });
-  } else {
-    const companiesRes = await JoblyApi.getCompanies();
-    setCompanies({
-      data: companiesRes,
-      isLoading: false
-    });
+      const companiesRes = await JoblyApi.getCompaniesByTerm(keyword);
+      setCompanies({
+        data: companiesRes,
+        isLoading: false
+      });
+    } else {
+      const companiesRes = await JoblyApi.getCompanies();
+      setCompanies({
+        data: companiesRes,
+        isLoading: false
+      });
+    }
   }
-}
 
   useEffect(function fetchCompaniesWhenMounted() {
     async function fetchCompanies() {
