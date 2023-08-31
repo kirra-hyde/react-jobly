@@ -12,6 +12,7 @@ import { v4 as uuid } from "uuid";
  *
  * RoutesList -> JobsList -> JobCard
  */
+//TODO: fix doc string.  And only pass in what we want.
 
 function JobsCardList({ jobs }) {
 
@@ -22,6 +23,7 @@ function JobsCardList({ jobs }) {
   ));
 
 };
+//TODO: no uuid.
 
 
 export default JobsCardList;

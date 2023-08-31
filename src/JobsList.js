@@ -38,6 +38,7 @@ function JobsList() {
       });
     }
   }
+  //TODO: singular (And, less important, maybe in api.js).
 
   useEffect(function fetchjobsWhenMounted() {
     async function fetchJobs() {

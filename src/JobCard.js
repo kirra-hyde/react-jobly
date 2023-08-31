@@ -25,5 +25,6 @@ function JobCard({ job }) {
     </div>
   )
 }
+//TODO: What if no salary/equity provided?
 
 export default JobCard;

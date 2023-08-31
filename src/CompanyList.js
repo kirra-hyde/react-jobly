@@ -13,6 +13,7 @@ import {v4 as uuid} from "uuid";
  *
  * RoutesList -> CompanyList -> CompanyCard
  */
+//TODO: Fix state in docstring.
 
 function CompanyList() {
   const [companies, setCompanies] = useState({
@@ -40,6 +41,7 @@ function CompanyList() {
       });
     }
   }
+  //TODO: Move logic to api.js
 
   useEffect(function fetchCompaniesWhenMounted() {
     async function fetchCompanies() {
@@ -64,6 +66,7 @@ function CompanyList() {
     return (<h3>Sorry, no results found!</h3>)
   }
 
+  console.log("companies are:", companies.data);
   return (
     <div className="CompanyList">
       <SearchForm searchFor={searchFor}/>
@@ -75,10 +78,7 @@ function CompanyList() {
     </div>
   )
 }
+//TODO: don't do uuid here. handle.
 
 
 export default CompanyList;
-
-
-// TODO: fix null images, should not show broken image
-// TODO: fix searchForm on jobs comp, should show all jobs if no keyword

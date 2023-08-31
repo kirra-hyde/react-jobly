@@ -9,7 +9,7 @@ import JobsList from './JobsList';
  * Props: none
  *
  * State: none
- * 
+ *
  * App -> RoutesList -> { CompanyList, CompanyDetail, JobsList, Homepage}
  */
 
