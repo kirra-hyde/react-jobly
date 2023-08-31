@@ -11,16 +11,24 @@ import React from "react";
 
 function JobCard({ title, salary, equity }) {
 
+
+
   return (
     <div className="Job">
       <div className="Job-title">
         <h3>{title}</h3>
       </div>
       <div className="Job-salary">
-        Salary: {salary}
+        {!salary
+          ? <p>Salary: data not provided.</p>
+          : <p>Salary: {salary}</p>
+        }
       </div>
       <div className="Job-equity">
-        Equity: {equity}
+        {!equity && equity !== 0
+          ? <p>Equity: data not provided.</p>
+          : <p>Equity: {equity}</p>
+        }
       </div>
     </div>
   )
