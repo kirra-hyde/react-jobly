@@ -8,7 +8,7 @@ import JobCardList from "./JobCardList";
  *
  * Props: none
  *
- * State: company
+ * State: company, ex. { data, isLoading }
  *
  * RoutesList -> CompanyDetail -> JobCardList
  */
@@ -18,27 +18,23 @@ function CompanyDetail() {
 
   const [company, setCompany] = useState({
     data: null,
-    isLoading: true,
-    exists: false  //TODO: Put in different piece of state.  (Because of lines 39-41.)  Independent.
+    isLoading: true
   });
 
-  console.log("CompanyDetail rendered ", handle);
-
   useEffect(function fetchCompanyWhenMounted() {
-    console.log("effect ran")
     async function fetchCompany() {
       try {
         const companyRes = await JoblyApi.getCompany(handle);
         setCompany({
           data: companyRes,
-          isLoading: false,
-          exists: true
+          isLoading: false
         });
       } catch (err) {
         console.warn(err);
         setCompany({
-          exists: false
-        })
+          data: null,
+          isLoading: false
+        });
       }
     }
     fetchCompany();
@@ -48,15 +44,14 @@ function CompanyDetail() {
     return (<h1>Loading...</h1>);
   }
 
-  if (company.exists === false) {
-    return (<h3>Sorry, no such company</h3>);
+  if (company.data === null) {
+    return (<h3>Sorry, no such company.</h3>);
   }
 
-  //TODO: missing class name.
   return (
-    <div>
-      <h3>{ company.data.name }</h3>
-      <p>{ company.data.description }</p>
+    <div className="CompanyDetail">
+      <h3>{company.data.name}</h3>
+      <p>{company.data.description}</p>
       <br />
       <JobCardList jobs={company.data.jobs} />
     </div>

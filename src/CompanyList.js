@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
-import {v4 as uuid} from "uuid";
 
 /** Renders page displaying list of companies and houses logic
  * to retrieve list of companies.
  *
  * Props: none
  *
- * State: companies, ex. [{name, description, logoUrl}, ...]
+ * State: companies,
+ *  ex. [{ handle, name, description, logoUrl, numEmployees}, ...]
  *
  * RoutesList -> CompanyList -> CompanyCard
  */
-//TODO: Fix state in docstring.
 
 function CompanyList() {
   const [companies, setCompanies] = useState({
@@ -41,6 +40,7 @@ function CompanyList() {
       });
     }
   }
+
   //TODO: Move logic to api.js
 
   useEffect(function fetchCompaniesWhenMounted() {
@@ -66,19 +66,21 @@ function CompanyList() {
     return (<h3>Sorry, no results found!</h3>)
   }
 
-  console.log("companies are:", companies.data);
   return (
     <div className="CompanyList">
       <SearchForm searchFor={searchFor}/>
       {companies.data.map(c => (
-        <div key={uuid()}>
-          <CompanyCard company={c}/>
+        <div key={c.handle}>
+          <CompanyCard
+              handle={c.handle}
+              url={c.logoUrl}
+              name={c.name}
+              desc={c.description}/>
         </div>
       ))}
     </div>
   )
 }
-//TODO: don't do uuid here. handle.
 
 
 export default CompanyList;

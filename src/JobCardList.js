@@ -2,28 +2,33 @@ import React from "react";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 import SearchForm from "./SearchForm";
-import { v4 as uuid } from "uuid";
+
 
 /** Renders page displaying list of jobs.
  *
- * Props: jobs, ex. [{companyName, title, equity, salary}, ...]
+ * Props: jobs
+ *  ex. [{id, title, equity, salary, companyName, companyHandle}, ...]
  *
  * State: none
  *
  * RoutesList -> JobsList -> JobCard
  */
-//TODO: fix doc string.  And only pass in what we want.
 
 function JobsCardList({ jobs }) {
 
+  console.log(jobs);
+
   return jobs.map(job => (
-    <div key={uuid()}>
-      <JobCard job={job} />
+    <div key={job.id}>
+      <JobCard
+        title={job.title}
+        salary={job.salary}
+        equity={job.equity} />
     </div>
   ));
 
 };
-//TODO: no uuid.
+
 
 
 export default JobsCardList;

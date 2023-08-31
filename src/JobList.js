@@ -8,12 +8,13 @@ import JobCardList from "./JobCardList";
  *
  * Props: none
  *
- * State: list of jobs [{companyName, title, equity, salary}, ...]
+ * State: jobs
+ *  ex. [{id, title, equity, salary, companyName, companyHandle}, ...]
  *
  * RoutesList -> JobsList -> JobCardList
  */
 
-function JobsList() {
+function JobList() {
   const [jobs, setjobs] = useState({
     data: null,
     isLoading: true,
@@ -38,6 +39,7 @@ function JobsList() {
       });
     }
   }
+
   //TODO: singular (And, less important, maybe in api.js).
 
   useEffect(function fetchjobsWhenMounted() {
@@ -72,4 +74,4 @@ function JobsList() {
 }
 
 
-export default JobsList;
+export default JobList;

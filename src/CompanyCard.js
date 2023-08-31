@@ -3,33 +3,36 @@ import { Link } from "react-router-dom";
 
 /** Renders individual company card.
  *
- * Props: company, ex. {name, description, logoUrl}
+ * Props:
+ * - handle
+ * - url
+ * - name
+ * - desc
  *
  * State: none
  *
  * CompanyList -> CompanyCard
  */
 
-//TODO: Make props right. (Or only pass in what we want--better).
+function CompanyCard({ handle, url, name, desc }) {
 
-function CompanyCard({ company }) {
+// another opt: {company.logoUrl && <img alt={handle} src={`${url}`}/>}
 
-//TODO: {company.logoUrl && <img />}
   return(
     <div className="Company">
         <div className="Company-logo">
-          {company.logoUrl !== null
-            ? <img alt={company.handle} src={`${company.logoUrl}`}/>
+          {url !== null
+            ? <img alt={handle} src={`${url}`}/>
             : ""
           }
         </div>
         <div className="Company-name">
-          <Link to={`/companies/${company.handle}`}>
-            <h3>{company.name}</h3>
+          <Link to={`/companies/${handle}`}>
+            <h3>{name}</h3>
           </Link>
         </div>
         <div className="Company-description">
-          <p>{company.description}</p>
+          <p>{desc}</p>
         </div>
         <br />
         <br />
