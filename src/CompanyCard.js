@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 /** Renders individual company card.
  *
@@ -17,9 +18,9 @@ function CompanyCard({ company }) {
           <img alt={company.handle} src={`${company.logoUrl}`}/>
         </div>
         <div className="Company-name">
-          <a href={`/companies/${company.handle}`}>
+          <Link to={`/companies/${company.handle}`}>
             <h3>{company.name}</h3>
-          </a>
+          </Link>
         </div>
         <div className="Company-description">
           <p>{company.description}</p>

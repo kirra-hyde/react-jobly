@@ -61,6 +61,7 @@ class JoblyApi {
 
   /** Get list of all companies that match keyword. */
   static async getCompaniesByTerm(keyword) {
+    
     let res = await this.request(`companies?nameLike=${keyword}`);
     return res.companies;
   }

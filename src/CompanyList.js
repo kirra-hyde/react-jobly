@@ -22,14 +22,24 @@ function CompanyList() {
 
   /** Makes an API call to fetch list of jobs that contain
    * passed in keyword and updates state for companies.
+   *
+   * If keyword is not provided, return all companies.
    */
   async function searchFor(keyword) {
+    if (keyword !== ""){
     const companiesRes = await JoblyApi.getCompaniesByTerm(keyword);
     setCompanies({
       data: companiesRes,
       isLoading: false
     });
+  } else {
+    const companiesRes = await JoblyApi.getCompanies();
+    setCompanies({
+      data: companiesRes,
+      isLoading: false
+    });
   }
+}
 
   useEffect(function fetchCompaniesWhenMounted() {
     async function fetchCompanies() {
@@ -68,3 +78,7 @@ function CompanyList() {
 
 
 export default CompanyList;
+
+
+// TODO: fix null images, should not show broken image
+// TODO: fix searchForm on jobs comp, should show all jobs if no keyword
