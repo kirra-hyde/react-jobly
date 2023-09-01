@@ -5,7 +5,9 @@ import userContext from "./userContext";
 
 /** Renders navigation bar.
  *
- * Props: none
+ * Props:
+ *  - auth: token
+ *  - logout fn
  *
  * State: none
  *

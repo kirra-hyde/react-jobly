@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 /** Renders registration form.
  *
- * Props: signUp()
+ * Props: signUp fn
  *
  * State: formData
  *
@@ -10,16 +10,18 @@ import React, { useState } from "react";
  */
 
 
-function SignupForm( { signUp }) {
+function SignupForm({ signUp }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     firstName: "",
     lastName: "",
     email: ""
-  })
+  });
 
-  /** update search term. */
+  // TODO: handle errors in form; have states for err msgs, alerts are dated
+
+  /** update formData. */
   function handleChange(evt) {
     const input = evt.target;
     setFormData(formData => ({
@@ -28,7 +30,7 @@ function SignupForm( { signUp }) {
     }));
   }
 
-  /** On form submission, send searchTerm to parent. */
+  /** On form submission, send formData to parent. */
   function handleSubmit(evt) {
     evt.preventDefault();
     signUp(formData);
@@ -40,56 +42,56 @@ function SignupForm( { signUp }) {
       <div>
         <label htmlFor="username">Username: </label>
         <input
-            name="username"
-            type="text"
-            onChange={handleChange}
-            value={formData.username}
-            required
+          name="username"
+          type="text"
+          onChange={handleChange}
+          value={formData.username}
+          required
         />
       </div>
       <div>
         <label htmlFor="password">Password: </label>
         <input
-            name="password"
-            type="new-password"
-            onChange={handleChange}
-            value={formData.password}
-            required
+          name="password"
+          type="password"
+          onChange={handleChange}
+          value={formData.password}
+          required
         />
       </div>
       <div>
         <label htmlFor="firstName">First Name: </label>
         <input
-            name="firstName"
-            type="text"
-            onChange={handleChange}
-            value={formData.firstName}
-            required
+          name="firstName"
+          type="text"
+          onChange={handleChange}
+          value={formData.firstName}
+          required
         />
       </div>
       <div>
         <label htmlFor="lastName">Last Name: </label>
         <input
-            name="lastName"
-            type="text"
-            onChange={handleChange}
-            value={formData.lastName}
-            required
+          name="lastName"
+          type="text"
+          onChange={handleChange}
+          value={formData.lastName}
+          required
         />
       </div>
       <div>
         <label htmlFor="email">Email: </label>
         <input
-            name="email"
-            type="email"
-            onChange={handleChange}
-            value={formData.email}
-            required
+          name="email"
+          type="email"
+          onChange={handleChange}
+          value={formData.email}
+          required
         />
       </div>
       <button>Submit</button>
     </form>
-  )
+  );
 }
 
 export default SignupForm;

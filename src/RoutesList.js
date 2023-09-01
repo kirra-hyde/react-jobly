@@ -9,7 +9,10 @@ import ProfileForm from './ProfileForm';
 
 /** Define routes.
  *
- * Props: none
+ * Props:
+ *  - signUp fn
+ *  - login fn
+ *  - auth: token
  *
  * State: none
  *

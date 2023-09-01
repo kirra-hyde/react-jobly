@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 /** Renders login form.
  *
- * Props: login()
+ * Props: login fn
  *
  * State: formData
  *
@@ -15,6 +15,9 @@ function LoginForm({ login }) {
     username: "",
     password: "",
   })
+
+  // TODO: scrap alerts
+  // TODO: update docstrings
 
   /** update search term. */
   function handleChange(evt) {
@@ -48,7 +51,7 @@ function LoginForm({ login }) {
         <label htmlFor="password">Password: </label>
         <input
             name="password"
-            type="new-password"
+            type="password"
             onChange={handleChange}
             value={formData.password}
             required

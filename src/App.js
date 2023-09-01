@@ -7,14 +7,16 @@ import JoblyApi from './api';
 import jwt_decode from "jwt-decode";
 import userContext from './userContext';
 
+
 /** App
  *
  * State:
- * - user
+ * - user, like { username, firstName, lastName, email}
  * - token
  *
  * App -> RoutesList
  */
+
 function App() {
 
   const [user, setUser] = useState({
@@ -34,7 +36,6 @@ function App() {
     } catch (err) {
       alert(err);
     }
-
   }
 
   /** Login an existing user and update token */
@@ -42,7 +43,8 @@ function App() {
     try {
       await JoblyApi.login(userData);
       setToken(JoblyApi.token);
-    } catch(err) {
+      localStorage.setItem('token', JSON.stringify(JoblyApi.token));
+    } catch (err) {
       alert(err);
     }
   }
@@ -50,26 +52,34 @@ function App() {
   /** Logout user, update token to empty string */
   function logout() {
     setToken("");
+    JoblyApi.token = "";
   }
 
- 
-  useEffect(function fetchUserWhenMounted() {
+  useEffect(function fetchUserWhenMountedOrTokenChange() {
     async function fetchUser() {
-      let username;
       if (token) {
         const payload = jwt_decode(token);
-        username = payload.username;
+        let username = payload.username;
         try {
-          const userRes = await JoblyApi.getUser(username);
+          const userRes = await JoblyApi.getUser(username); // userData
           setUser(userRes);
         } catch (err) {
           console.warn(err);
         }
+      } else {
+        setUser({
+          username: "",
+          firstName: "",
+          lastName: "",
+          email: ""
+        });
       }
     }
     fetchUser();
   }, [token]);
 
+  console.log("our user:", user);
+  console.log("our token", token);
 
   return (
     <div className="App">

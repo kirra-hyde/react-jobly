@@ -19,7 +19,6 @@ function Homepage() {
         <Link to="/signup"><button>Sign up</button></Link>
       </div>;
 
-  console.log("first name is:", firstName);
 
   return (
     <div className="Homepage">
