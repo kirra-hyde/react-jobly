@@ -5,6 +5,7 @@ import Navigation from './Navigation';
 import { useState, useEffect } from 'react';
 import JoblyApi from './api';
 import jwt_decode from "jwt-decode";
+import userContext from './userContext';
 
 /** App
  *
@@ -15,11 +16,12 @@ import jwt_decode from "jwt-decode";
  * App -> RoutesList
  */
 function App() {
+
   const [user, setUser] = useState({
-    username: null,
-    firstName: null,
-    lastName: null,
-    email: null
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: ""
   });
 
   const [token, setToken] = useState("");
@@ -62,13 +64,18 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navigation auth={token} logout={logout} />
-        <RoutesList
-          signUp={signUp}
-          login={login}
-          auth={token} />
-      </BrowserRouter>
+      <userContext.Provider value={{
+        username: user.username,
+        firstName: user.firstName
+      }}>
+        <BrowserRouter>
+          <Navigation auth={token} logout={logout} />
+          <RoutesList
+            signUp={signUp}
+            login={login}
+            auth={token} />
+        </BrowserRouter>
+      </userContext.Provider>
     </div>
   );
 }
