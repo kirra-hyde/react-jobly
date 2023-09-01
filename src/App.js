@@ -4,8 +4,13 @@ import RoutesList from './RoutesList';
 import Navigation from './Navigation';
 import { useState, useEffect } from 'react';
 import JoblyApi from './api';
+import jwt_decode from "jwt-decode";
 
 /** App
+ *
+ * State:
+ * - user
+ * - token
  *
  * App -> RoutesList
  */
@@ -17,30 +22,52 @@ function App() {
     email: null
   });
 
-  console.log("user", user);
+  const [token, setToken] = useState("");
 
+  /** temp doc */
   async function signUp(newUserData) {
-    const result = await JoblyApi.register(newUserData);
-    console.log("Result is:", result);
-    setUser(result);
-    console.log("user - post render", user);
+    await JoblyApi.register(newUserData);
+    setToken(JoblyApi.token);
   }
 
+  /** temp doc */
   async function login(userData) {
-    const result = await JoblyApi.logIn(userData);
-    console.log("result from login:", result);
-
-
+    await JoblyApi.login(userData);
+    setToken(JoblyApi.token);
   }
+
+  /** Logout user, reset token to empty str. */
+  function logout() {
+    setToken("");
+  }
+
+  /** temp doc */
+  useEffect(function fetchUserWhenMounted() {
+    async function fetchUser() {
+      let username;
+      if (token) {
+        const payload = jwt_decode(token);
+        username = payload.username;
+        try {
+          const userRes = await JoblyApi.getUser(username);
+          setUser(userRes);
+        } catch (err) {
+          console.warn(err);
+        }
+      }
+    }
+    fetchUser();
+  }, [token]);
+
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation />
+        <Navigation auth={token} logout={logout} />
         <RoutesList
-            signUp={signUp}
-            login={login}
-            user={user} />
+          signUp={signUp}
+          login={login}
+          auth={token} />
       </BrowserRouter>
     </div>
   );

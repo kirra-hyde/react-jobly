@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 
 /** Renders navigation bar.
@@ -11,12 +11,23 @@ import { NavLink, Link } from "react-router-dom";
  * App -> Navigation
 */
 
-function Navigation() {
+function Navigation({auth, logout}) {
+  if (!auth){
+    return (
+      <nav className="Navigation">
+        <NavLink to="/"> Jobly </NavLink>
+        <NavLink to="/login" end> Login </NavLink>
+        <NavLink to="/signup" end> Signup </NavLink>
+      </nav>
+    )
+  }
+
   return (
     <nav className="Navigation">
-      <Link to="/"> Jobly </Link>
+      <NavLink to="/"> Jobly </NavLink>
       <NavLink to="/companies" end> Companies </NavLink>
       <NavLink to="/jobs" end> Jobs </NavLink>
+      <NavLink onClick={logout} to="/" end> Log out </NavLink>
     </nav>
   )
 }

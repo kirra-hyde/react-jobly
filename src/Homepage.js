@@ -15,7 +15,6 @@ function Homepage() {
       <h3 className="Homepage-slogan">
         All jobs in one, convenient place.
       </h3>
-      -Morgan Freeman
     </div>
   )
 }
