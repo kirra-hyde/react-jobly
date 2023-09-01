@@ -27,7 +27,7 @@ function LoginForm({ login }) {
 
   /** On form submission, send searchTerm to parent. */
   function handleSubmit(evt) {
-    evt.preventDefault();
+    evt.preventDefault()
     login(formData);
   }
 

@@ -26,24 +26,33 @@ function App() {
 
   const [token, setToken] = useState("");
 
-  /** temp doc */
+  /** Register a new user and update token */
   async function signUp(newUserData) {
-    await JoblyApi.register(newUserData);
-    setToken(JoblyApi.token);
+    try {
+      await JoblyApi.register(newUserData);
+      setToken(JoblyApi.token);
+    } catch (err) {
+      alert(err);
+    }
+
   }
 
-  /** temp doc */
+  /** Login an existing user and update token */
   async function login(userData) {
-    await JoblyApi.login(userData);
-    setToken(JoblyApi.token);
+    try {
+      await JoblyApi.login(userData);
+      setToken(JoblyApi.token);
+    } catch(err) {
+      alert(err);
+    }
   }
 
-  /** Logout user, reset token to empty str. */
+  /** Logout user, update token to empty string */
   function logout() {
     setToken("");
   }
 
-  /** temp doc */
+ 
   useEffect(function fetchUserWhenMounted() {
     async function fetchUser() {
       let username;
