@@ -12,7 +12,7 @@ import React from "react";
 
 function SignupForm( { signUp }) {
 
-  signUp({username: "pekdfjglkjon23hjkhjkhjk", firstName: "Kirra", lastName: "Hyde", email: "email@gmail.com", password: "password"});
+  signUp({username: "z1278", firstName: "Kirra", lastName: "Hyde", email: "email@gmail.com", password: "password"});
   console.log("In form")
   return (
     <h1>SignupForm</h1>

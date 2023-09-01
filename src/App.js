@@ -17,11 +17,13 @@ function App() {
     email: null
   })
 
+  console.log("user", user)
+
   async function signUp(newUserData) {
-    console.log("Do we get in signUp?");
     const result = await JoblyApi.register(newUserData);
+    console.log("Result is:", result);
     setUser(result);
-    // console.log("Result is:", result);
+    console.log("user - post render", user)
   }
 
   return (
