@@ -36,6 +36,7 @@ function SignupForm( { signUp }) {
 
   return (
     <form className="SignupForm" onSubmit={handleSubmit}>
+      <h3>Sign Up!</h3>
       <div>
         <label htmlFor="username">Username: </label>
         <input

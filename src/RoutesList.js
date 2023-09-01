@@ -27,11 +27,12 @@ function RoutesList({ signUp }) {
 
       <Route path="/" element={ <Homepage />}/>
 
-      <Route path="/login" element={ <LoginForm />}/>
+      <Route path="/login" element={ <LoginForm login={login}/>}/>
 
       <Route path="/signup" element={ <SignupForm signUp={signUp}/>}/>
 
-      <Route path="/profile" element={ <ProfileForm />}/>
+      {/* <Route path="/profile"
+             element={ <ProfileForm editUser={editUser} user={user}/>} /> */}
 
       <Route path="*" element={ <Navigate to="/" />}/>
     </Routes>
